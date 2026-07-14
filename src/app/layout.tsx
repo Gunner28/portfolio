@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import Sidebar from "@/components/Sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,6 +11,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const vintageSerif = Playfair_Display({
+  variable: "--font-vintage-serif",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
 const siteUrl = "https://portfolio-kappa-teal-68.vercel.app";
@@ -43,14 +48,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${vintageSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        <Nav />
-        <main className="flex-1 w-full max-w-5xl mx-auto px-6 md:px-8">
+      <body className="min-h-full bg-background text-foreground">
+        <Sidebar />
+        <main className="lg:ml-[380px] px-6 sm:px-10 lg:pr-20 lg:pl-16">
           {children}
         </main>
-        <Footer />
       </body>
     </html>
   );
