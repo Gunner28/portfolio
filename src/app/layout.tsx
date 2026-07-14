@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://gaganpurushotham.vercel.app";
+const siteUrl = "https://portfolio-kappa-teal-68.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -27,6 +27,7 @@ export const metadata: Metadata = {
       "Portfolio of Gagan Purushotham — data science, machine learning, and computer vision projects.",
     url: siteUrl,
     siteName: "Gagan Purushotham",
+    images: ["/og.png"],
     type: "website",
   },
   icons: {
