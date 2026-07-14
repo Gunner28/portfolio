@@ -90,9 +90,9 @@ export default function Sidebar() {
         </div>
       )}
 
-      {/* Desktop fixed sidebar — no partition, blends into the page */}
-      <aside className="hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 lg:left-0 lg:w-[380px] lg:justify-between lg:py-16 lg:pl-16 lg:pr-10 z-20">
-        <div className="lamp-glow">
+      {/* Desktop sidebar — sticky, no partition, blends into the page */}
+      <aside className="hidden lg:flex lg:flex-col lg:sticky lg:top-0 lg:h-screen lg:w-[42%] lg:justify-between lg:py-24 z-20">
+        <div>
           <p className="font-mono text-xs text-brass mb-3 tracking-wider">
             {profile.location.toUpperCase()}
           </p>

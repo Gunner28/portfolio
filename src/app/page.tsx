@@ -20,7 +20,7 @@ function SectionHeader({ title }: { title: string }) {
 
 export default function Home() {
   return (
-    <div className="max-w-2xl py-16 lg:py-24 flex flex-col gap-28">
+    <div className="w-full py-16 lg:py-24 flex flex-col gap-28">
       <section id="about" className="scroll-mt-24">
         <SectionHeader title="About" />
         <p className="text-base sm:text-lg leading-relaxed text-foreground/90">
