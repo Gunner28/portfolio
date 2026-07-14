@@ -142,8 +142,9 @@ export default function Sidebar() {
             </svg>
           </a>
           <a
-            href="/resume.docx"
-            download
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer"
             className="ml-auto font-mono text-xs text-brass hover:text-brass-bright border border-wood-line hover:border-brass px-3 py-1.5 transition-colors"
           >
             Résumé
