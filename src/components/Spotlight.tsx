@@ -38,7 +38,7 @@ export default function Spotlight() {
     <div
       ref={ref}
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-30 opacity-0 transition-opacity duration-300"
+      className="spotlight pointer-events-none fixed inset-0 z-30 opacity-0 transition-opacity duration-300"
       style={{
         background:
           "radial-gradient(520px circle at var(--x, 50%) var(--y, 50%), rgba(224, 183, 104, 0.14), rgba(224, 183, 104, 0.05) 30%, transparent 55%)",

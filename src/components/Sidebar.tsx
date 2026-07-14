@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { profile } from "@/data/resume";
+import ThemeToggle from "@/components/ThemeToggle";
+import Ambient from "@/components/Ambient";
+import { UI_EVENTS } from "@/lib/ui";
 
 const sections = [
   { id: "about", label: "About" },
@@ -74,15 +77,19 @@ export default function Sidebar() {
         <a href="#about" className="font-serif text-lg text-foreground">
           Gagan Purushotham
         </a>
-        <button
-          type="button"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="font-mono text-xs border border-wood-line text-muted px-3 py-1.5"
-        >
-          {open ? "Close" : "Menu"}
-        </button>
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+          <Ambient />
+          <button
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="font-mono text-xs border border-wood-line text-muted px-3 py-1.5"
+          >
+            {open ? "Close" : "Menu"}
+          </button>
+        </div>
       </header>
       {open && (
         <div className="lg:hidden border-b border-wood-line bg-panel px-6 py-4">
@@ -108,7 +115,8 @@ export default function Sidebar() {
           <NavList />
         </nav>
 
-        <div className="flex items-center gap-5 mt-10">
+        <div className="mt-10 flex flex-col gap-4">
+          <div className="flex items-center gap-5">
           <a
             href={`mailto:${profile.email}`}
             aria-label="Email"
@@ -149,6 +157,20 @@ export default function Sidebar() {
           >
             Résumé
           </a>
+          </div>
+          <div className="flex items-center gap-4 text-muted">
+            <ThemeToggle />
+            <Ambient />
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent(UI_EVENTS.openPalette))}
+              aria-label="Open command palette"
+              title="Command palette (⌘K)"
+              className="ml-auto font-mono text-[11px] hover:text-brass-bright border border-wood-line hover:border-brass px-2 py-1 transition-colors"
+            >
+              ⌘K
+            </button>
+          </div>
         </div>
       </aside>
     </>

@@ -4,6 +4,11 @@ import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import Spotlight from "@/components/Spotlight";
 import Diary from "@/components/Diary";
+import ScrollProgress from "@/components/ScrollProgress";
+import CommandPalette from "@/components/CommandPalette";
+import BackToTop from "@/components/BackToTop";
+import Toaster from "@/components/Toaster";
+import { profile } from "@/data/resume";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +45,35 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  alternates: {
+    canonical: "/",
+  },
 };
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: "Data Scientist & AI Engineer",
+  email: `mailto:${profile.email}`,
+  url: siteUrl,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Melbourne",
+    addressCountry: "Australia",
+  },
+  sameAs: [profile.github, profile.linkedin],
+  knowsAbout: [
+    "Data Science",
+    "Machine Learning",
+    "Computer Vision",
+    "Deep Learning",
+    "Data Analysis",
+  ],
+};
+
+// Runs before paint to apply the saved theme and avoid a flash of the wrong palette.
+const themeScript = `(function(){try{var t=localStorage.getItem('gp-theme');if(t==='light'){document.documentElement.dataset.theme='light';}}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -52,7 +85,19 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${vintageSerif.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <noscript>
+          {/* Reveal-animated content stays visible without JS */}
+          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+      </head>
       <body className="min-h-full bg-background text-foreground">
+        <ScrollProgress />
         <Spotlight />
         <div className="lg:mx-auto lg:flex lg:max-w-6xl lg:justify-between lg:gap-12 lg:px-12 xl:px-16">
           <Sidebar />
@@ -60,7 +105,10 @@ export default function RootLayout({
             {children}
           </main>
         </div>
+        <CommandPalette />
+        <BackToTop />
         <Diary />
+        <Toaster />
       </body>
     </html>
   );
