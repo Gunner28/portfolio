@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import { profile } from "@/data/resume";
 
 const sections = [
-  { id: "about", num: "01", label: "About" },
-  { id: "experience", num: "02", label: "Experience" },
-  { id: "projects", num: "03", label: "Projects" },
-  { id: "contact", num: "04", label: "Contact" },
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
 ];
 
 export default function Sidebar() {
@@ -43,25 +42,19 @@ export default function Sidebar() {
             <a
               href={`#${s.id}`}
               onClick={onNavigate}
-              className="group flex items-center gap-3 py-2.5"
+              className="group flex items-center gap-4 py-2.5"
             >
               <span
                 className={
-                  "font-mono text-xs transition-colors " +
-                  (isActive ? "text-brass-bright" : "text-muted group-hover:text-brass")
-                }
-              >
-                {s.num}
-              </span>
-              <span
-                className={
                   "h-px transition-all " +
-                  (isActive ? "w-8 bg-brass-bright" : "w-4 bg-wood-line group-hover:w-8 group-hover:bg-brass")
+                  (isActive
+                    ? "w-10 bg-brass-bright"
+                    : "w-5 bg-wood-line group-hover:w-10 group-hover:bg-brass")
                 }
               />
               <span
                 className={
-                  "text-sm tracking-wide transition-colors " +
+                  "font-mono text-xs uppercase tracking-[0.2em] transition-colors " +
                   (isActive ? "text-foreground" : "text-muted group-hover:text-foreground")
                 }
               >
@@ -97,8 +90,8 @@ export default function Sidebar() {
         </div>
       )}
 
-      {/* Desktop fixed sidebar */}
-      <aside className="hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 lg:left-0 lg:w-[380px] lg:justify-between lg:py-16 lg:pl-16 lg:pr-10 border-r border-wood-line bg-panel wood-grain">
+      {/* Desktop fixed sidebar — no partition, blends into the page */}
+      <aside className="hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 lg:left-0 lg:w-[380px] lg:justify-between lg:py-16 lg:pl-16 lg:pr-10 z-20">
         <div className="lamp-glow">
           <p className="font-mono text-xs text-brass mb-3 tracking-wider">
             {profile.location.toUpperCase()}

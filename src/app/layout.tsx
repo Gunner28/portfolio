@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import Spotlight from "@/components/Spotlight";
+import Diary from "@/components/Diary";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,10 +53,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${vintageSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
+        <Spotlight />
         <Sidebar />
-        <main className="lg:ml-[380px] px-6 sm:px-10 lg:pr-20 lg:pl-16">
+        <main className="relative z-10 lg:ml-[380px] px-6 sm:px-10 lg:pr-20 lg:pl-16">
           {children}
         </main>
+        <Diary />
       </body>
     </html>
   );

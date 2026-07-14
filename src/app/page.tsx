@@ -7,10 +7,9 @@ import {
   projects,
 } from "@/data/resume";
 
-function SectionHeader({ num, title }: { num: string; title: string }) {
+function SectionHeader({ title }: { title: string }) {
   return (
     <div className="flex items-center gap-4 mb-10">
-      <span className="font-mono text-sm text-brass">{num}</span>
       <h2 className="font-serif text-2xl sm:text-3xl font-bold text-foreground whitespace-nowrap">
         {title}
       </h2>
@@ -23,7 +22,7 @@ export default function Home() {
   return (
     <div className="max-w-2xl py-16 lg:py-24 flex flex-col gap-28">
       <section id="about" className="scroll-mt-24">
-        <SectionHeader num="01" title="About" />
+        <SectionHeader title="About" />
         <p className="text-base sm:text-lg leading-relaxed text-foreground/90">
           {profile.bio}
         </p>
@@ -75,7 +74,7 @@ export default function Home() {
       </section>
 
       <section id="experience" className="scroll-mt-24">
-        <SectionHeader num="02" title="Experience" />
+        <SectionHeader title="Experience" />
         <div className="flex flex-col">
           {experience.map((job) => (
             <div
@@ -99,8 +98,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="scroll-mt-24">
-        <SectionHeader num="03" title="Projects" />
+      <section id="projects" className="scroll-mt-24 pb-8">
+        <SectionHeader title="Projects" />
         <div className="flex flex-col gap-6">
           {projects.map((project) => (
             <div
@@ -140,23 +139,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-24 pb-16">
-        <SectionHeader num="04" title="Contact" />
-        <p className="text-base text-foreground/90 leading-relaxed max-w-lg">
-          Open to data analyst, data scientist, computer vision, and AI engineering
-          opportunities. Reach out via email or connect below.
-        </p>
-        <a
-          href={`mailto:${profile.email}`}
-          className="inline-block mt-8 px-6 py-3 bg-brass text-[#17110a] font-medium text-sm hover:bg-brass-bright transition-colors"
-        >
-          {profile.email}
-        </a>
-
-        <footer className="mt-24 font-mono text-xs text-muted">
-          Designed &amp; built by {profile.name}
-        </footer>
-      </section>
+      <footer className="pb-16 font-mono text-xs text-muted">
+        Designed &amp; built by {profile.name}
+      </footer>
     </div>
   );
 }
