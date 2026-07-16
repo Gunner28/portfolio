@@ -8,6 +8,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import CommandPalette from "@/components/CommandPalette";
 import BackToTop from "@/components/BackToTop";
 import Toaster from "@/components/Toaster";
+import SecretWords from "@/components/SecretWords";
 import { profile } from "@/data/resume";
 import { site } from "@/data/site";
 
@@ -101,6 +102,7 @@ export default function RootLayout({
         <BackToTop />
         <Diary />
         <Toaster />
+        <SecretWords />
         <Analytics />
       </body>
     </html>

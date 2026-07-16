@@ -27,6 +27,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (features.notes) {
     entries.push({ url: `${site.url}/notes`, lastModified: now, changeFrequency: "weekly", priority: 0.7 });
   }
+  if (features.uses) {
+    entries.push({ url: `${site.url}/uses`, lastModified: now, changeFrequency: "monthly", priority: 0.5 });
+  }
+  if (features.stats) {
+    entries.push({ url: `${site.url}/stats`, lastModified: now, changeFrequency: "monthly", priority: 0.4 });
+  }
+  if (features.colophon) {
+    entries.push({ url: `${site.url}/colophon`, lastModified: now, changeFrequency: "yearly", priority: 0.3 });
+  }
+  if (features.card) {
+    entries.push({ url: `${site.url}/card`, lastModified: now, changeFrequency: "monthly", priority: 0.3 });
+  }
 
   return entries;
 }

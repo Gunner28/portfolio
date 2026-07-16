@@ -204,6 +204,46 @@ export default function Home() {
                 </p>
               </Link>
             )}
+            {features.uses && (
+              <Link href="/uses" className="group bg-background p-6 hover:bg-card transition-colors">
+                <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-brass-bright transition-colors">
+                  The toolkit
+                </h3>
+                <p className="mt-2 text-sm text-muted leading-relaxed">
+                  Hardware, software, and the daily instruments.
+                </p>
+              </Link>
+            )}
+            {features.stats && (
+              <Link href="/stats" className="group bg-background p-6 hover:bg-card transition-colors">
+                <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-brass-bright transition-colors">
+                  The ledger
+                </h3>
+                <p className="mt-2 text-sm text-muted leading-relaxed">
+                  The study, counted — live from its own records.
+                </p>
+              </Link>
+            )}
+            {features.colophon && (
+              <Link href="/colophon" className="group bg-background p-6 hover:bg-card transition-colors">
+                <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-brass-bright transition-colors">
+                  Colophon
+                </h3>
+                <p className="mt-2 text-sm text-muted leading-relaxed">
+                  Timber, type, pigment — how this place was built.
+                </p>
+              </Link>
+            )}
+            {features.card && (
+              <Link href="/card" className="group bg-background p-6 hover:bg-card transition-colors">
+                <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-brass-bright transition-colors">
+                  Library card
+                </h3>
+                <p className="mt-2 text-sm text-muted leading-relaxed">
+                  The reader&apos;s record — member since MMXXVI.
+                </p>
+              </Link>
+            )}
           </div>
         </section>
       )}

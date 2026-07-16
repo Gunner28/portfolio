@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { journalEntries } from "@/data/journal";
+import { UI_EVENTS } from "@/lib/ui";
 
 // The journal reveals itself only after the reader has lingered long enough.
 // Entries live in src/data/journal.ts — add there, they appear here.
@@ -50,6 +51,17 @@ export default function Diary() {
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
+
+  // The TARDIS route in — certain typed words force the journal open.
+  useEffect(() => {
+    const onUnlock = () => {
+      localStorage.setItem(UNLOCKED_KEY, "1");
+      setUnlocked(true);
+      setOpen(true);
+    };
+    window.addEventListener(UI_EVENTS.unlockDiary, onUnlock);
+    return () => window.removeEventListener(UI_EVENTS.unlockDiary, onUnlock);
+  }, []);
 
   if (!unlocked) return null;
 

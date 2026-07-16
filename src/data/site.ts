@@ -13,4 +13,8 @@ export const features = {
   now: true, // /now — what I'm up to lately
   bookshelf: true, // /bookshelf — the study's reading shelf
   notes: false, // /notes — writing; flips on when the first note lands in writing.ts
+  uses: true, // /uses — the toolkit
+  stats: true, // /stats — the ledger, counted live from site data
+  colophon: true, // /colophon — how the study was built
+  card: true, // /card — the reader's library card
 };

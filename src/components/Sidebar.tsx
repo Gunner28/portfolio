@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { profile } from "@/data/resume";
 import ThemeToggle from "@/components/ThemeToggle";
 import Ambient from "@/components/Ambient";
+import StudyClock from "@/components/StudyClock";
 import { UI_EVENTS } from "@/lib/ui";
 
 const sections = [
@@ -161,6 +162,7 @@ export default function Sidebar() {
           <div className="flex items-center gap-4 text-muted">
             <ThemeToggle />
             <Ambient />
+            <StudyClock />
             <button
               type="button"
               onClick={() => window.dispatchEvent(new CustomEvent(UI_EVENTS.openPalette))}

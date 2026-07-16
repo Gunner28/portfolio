@@ -5,6 +5,7 @@ export const UI_EVENTS = {
   toggleAmbient: "gp:toggle-ambient",
   toast: "gp:toast",
   openPalette: "gp:open-palette",
+  unlockDiary: "gp:unlock-diary",
 } as const;
 
 export function emit(name: string, detail?: unknown) {

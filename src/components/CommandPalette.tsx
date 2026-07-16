@@ -44,6 +44,18 @@ export default function CommandPalette() {
       ...(features.notes
         ? [{ id: "notes", label: "Read the field notes", hint: "Page", run: () => (window.location.href = "/notes") }]
         : []),
+      ...(features.uses
+        ? [{ id: "uses", label: "Open the toolkit", hint: "Page", run: () => (window.location.href = "/uses") }]
+        : []),
+      ...(features.stats
+        ? [{ id: "stats", label: "Balance the ledger", hint: "Page", run: () => (window.location.href = "/stats") }]
+        : []),
+      ...(features.colophon
+        ? [{ id: "colophon", label: "Read the colophon", hint: "Page", run: () => (window.location.href = "/colophon") }]
+        : []),
+      ...(features.card
+        ? [{ id: "card", label: "Inspect the library card", hint: "Page", run: () => (window.location.href = "/card") }]
+        : []),
       ...projects.map((p) => ({
         id: `project-${p.slug}`,
         label: p.name,
