@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { profile } from "@/data/resume";
+import { projects } from "@/data/projects";
+import { features } from "@/data/site";
 import { UI_EVENTS, toast } from "@/lib/ui";
 
 type Action = {
@@ -11,8 +13,12 @@ type Action = {
   run: () => void;
 };
 
+// Works from any page: scrolls if the section is present, otherwise
+// navigates home with the anchor.
 function scrollTo(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  else window.location.href = `/#${id}`;
 }
 
 export default function CommandPalette() {
@@ -26,6 +32,24 @@ export default function CommandPalette() {
       { id: "about", label: "Go to About", hint: "Section", run: () => scrollTo("about") },
       { id: "experience", label: "Go to Experience", hint: "Section", run: () => scrollTo("experience") },
       { id: "projects", label: "Go to Projects", hint: "Section", run: () => scrollTo("projects") },
+      ...(features.archive
+        ? [{ id: "archive", label: "Browse the catalogue", hint: "Page", run: () => (window.location.href = "/archive") }]
+        : []),
+      ...(features.now
+        ? [{ id: "now", label: "On the desk, now", hint: "Page", run: () => (window.location.href = "/now") }]
+        : []),
+      ...(features.bookshelf
+        ? [{ id: "bookshelf", label: "Open the bookshelf", hint: "Page", run: () => (window.location.href = "/bookshelf") }]
+        : []),
+      ...(features.notes
+        ? [{ id: "notes", label: "Read the field notes", hint: "Page", run: () => (window.location.href = "/notes") }]
+        : []),
+      ...projects.map((p) => ({
+        id: `project-${p.slug}`,
+        label: p.name,
+        hint: "Project",
+        run: () => (window.location.href = `/projects/${p.slug}`),
+      })),
       {
         id: "resume",
         label: "Open résumé (PDF)",

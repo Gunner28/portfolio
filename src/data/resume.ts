@@ -114,29 +114,4 @@ export const certifications = [
   },
 ];
 
-export const projects = [
-  {
-    name: "Dev-Pulse: Custom Mac Hardware Monitor",
-    blurb:
-      "A real-time telemetry dashboard engineered to monitor Apple Silicon (M2 Max) performance — live CPU/GPU core tracking and process resource management, bridging AI theory and system-level engineering.",
-    stack: ["Python", "Streamlit"],
-    github: "https://github.com/Gunner28",
-    link: "",
-  },
-  {
-    name: "AI-Powered Pest Detection",
-    blurb:
-      "Trained on 75,000 pest images for scalable classification in agricultural monitoring. Reached ~88% accuracy distinguishing beneficial vs. harmful species, with AI-driven treatment recommendations improving crop protection precision by ~25%.",
-    stack: ["Computer Vision", "CNNs", "Python"],
-    github: "https://github.com/Gunner28",
-    link: "",
-  },
-  {
-    name: "Payroll Management System",
-    blurb:
-      "A secure web-based payroll platform automating salary processing, role-based authentication, and encrypted records — cutting manual payroll effort by ~50% and lookup time by ~60%.",
-    stack: ["Web", "Security", "Database"],
-    github: "https://github.com/Gunner28",
-    link: "",
-  },
-];
+// Projects moved to src/data/projects.ts — richer type, detail pages, archive.

@@ -1,23 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { journalEntries } from "@/data/journal";
 
 // The journal reveals itself only after the reader has lingered long enough.
-// For now it holds a placeholder entry; future content gets slotted into ENTRIES.
+// Entries live in src/data/journal.ts — add there, they appear here.
 const UNLOCK_SECONDS = 600; // 10 minutes on the site
 const SECONDS_KEY = "gp-diary-seconds";
 const UNLOCKED_KEY = "gp-diary-unlocked";
-
-const ENTRIES = [
-  {
-    date: "Entry the First",
-    body: [
-      "If you are reading this, you stayed a while — long enough for the lamp to find you.",
-      "This page is a work in progress, the way a study is never quite finished. More will be written here in time: notes from projects, things learned, doors that open only to the patient.",
-      "Consider this the first of them. Come back later — it grows.",
-    ],
-  },
-];
 
 export default function Diary() {
   const [unlocked, setUnlocked] = useState(false);
@@ -108,7 +98,7 @@ export default function Diary() {
             </h2>
             <div className="mt-6 h-px bg-[#c2ab7f]" />
 
-            {ENTRIES.map((entry) => (
+            {journalEntries.map((entry) => (
               <div key={entry.date} className="mt-6">
                 <h3 className="font-serif text-lg italic text-[#4a3822]">{entry.date}</h3>
                 <div className="mt-3 flex flex-col gap-3">

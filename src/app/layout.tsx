@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
 import Spotlight from "@/components/Spotlight";
 import Diary from "@/components/Diary";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -9,6 +9,7 @@ import CommandPalette from "@/components/CommandPalette";
 import BackToTop from "@/components/BackToTop";
 import Toaster from "@/components/Toaster";
 import { profile } from "@/data/resume";
+import { site } from "@/data/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,19 +27,15 @@ const vintageSerif = Playfair_Display({
   weight: ["600", "700", "800"],
 });
 
-const siteUrl = "https://portfolio-kappa-teal-68.vercel.app";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: "Gagan Purushotham — Data Scientist & AI Engineer",
-  description:
-    "Portfolio of Gagan Purushotham — data science, machine learning, and computer vision projects. Based in Melbourne, Australia.",
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
   openGraph: {
-    title: "Gagan Purushotham — Data Scientist & AI Engineer",
-    description:
-      "Portfolio of Gagan Purushotham — data science, machine learning, and computer vision projects.",
-    url: siteUrl,
-    siteName: "Gagan Purushotham",
+    title: site.title,
+    description: site.description,
+    url: site.url,
+    siteName: profile.name,
     images: ["/og.png"],
     type: "website",
   },
@@ -56,7 +53,7 @@ const jsonLd = {
   name: profile.name,
   jobTitle: "Data Scientist & AI Engineer",
   email: `mailto:${profile.email}`,
-  url: siteUrl,
+  url: site.url,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Melbourne",
@@ -99,16 +96,12 @@ export default function RootLayout({
       <body className="min-h-full bg-background text-foreground">
         <ScrollProgress />
         <Spotlight />
-        <div className="lg:mx-auto lg:flex lg:max-w-6xl lg:justify-between lg:gap-12 lg:px-12 xl:px-16">
-          <Sidebar />
-          <main className="relative z-10 px-6 sm:px-10 lg:px-0 lg:w-[54%]">
-            {children}
-          </main>
-        </div>
+        {children}
         <CommandPalette />
         <BackToTop />
         <Diary />
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );

@@ -128,6 +128,30 @@ body {
   transform: none;
 }
 
+/* Page transition — soft candle-lit fade on every route change */
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.page-fade {
+  animation: pageFade 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Print — clean paper output of the study */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #1c1c1c !important;
+  }
+  .spotlight,
+  .toast-in,
+  [aria-label="Back to top"],
+  [aria-label="Open the hidden journal"],
+  [aria-label="Open command palette"] {
+    display: none !important;
+  }
+}
+
 /* Toast */
 @keyframes toastIn {
   from { opacity: 0; transform: translateY(12px); }
@@ -142,7 +166,8 @@ body {
   .ember-pulse,
   .modal-in,
   .fade-in,
-  .toast-in {
+  .toast-in,
+  .page-fade {
     animation: none;
   }
   .reveal {
